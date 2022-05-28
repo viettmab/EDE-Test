@@ -1,0 +1,213 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Dress {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model T_Shirt {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model Shirt {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model Jumpsuit {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model Skirt {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model Trousers {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  size_M      Int
+  size_S      Int
+  size_L      Int
+  size_XL     Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model Accessory {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  codePro     String
+  description String   @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  material    String   @db.VarChar(255)
+  color       String
+  price       Int
+  count       Int
+  img_1       String   @default("")
+  img_2       String   @default("")
+  publish     Boolean
+  newPro      Boolean
+}
+
+model User {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique @db.VarChar(255)
+  name        String  @db.VarChar(255)
+  phoneNumber String
+  address     String  @db.VarChar(255)
+  point       Int
+  admin       Boolean
+  staff       Boolean
+  orders      Order[]
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  namePro   String
+  price     Int
+  status    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model BannerImg {
+  id        Int      @id @default(autoincrement())
+  img       String
+  publish   Boolean
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Sales {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  disCount  Int
+  publish   Boolean
+}
+
+model SliderImg {
+  id        Int      @id @default(autoincrement())
+  img       String
+  publish   Boolean
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Voucher {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  disCount  Int
+  condition Int
+}
+
+model VoucherPremium {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  disCount  Int
+  condition Int
+}

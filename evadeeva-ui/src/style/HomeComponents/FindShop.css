@@ -1,0 +1,22 @@
+
+
+/* ----Find-shop---- */
+
+.findShop {
+    padding: 30px 30px;
+    background: #ebebeb;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.findShop a {
+    font-size: 22px;
+    color: #000;
+    transition: color .2s linear;
+}
+
+.findShop a:hover {
+    color: var(--color-hover);
+}
+
